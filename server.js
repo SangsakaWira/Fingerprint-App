@@ -5,7 +5,9 @@ const flash = require('connect-flash');
 const bodyParser = require("body-parser");
 const MongoDBStore = require("connect-mongodb-session")(session);
 
-const userRouter = require("./routes/user")
+const userRouter = require("./routes/user");
+const recordRouter = require("./routes/record");
+const senjataRouter = require("./routes/senjata")
 
 const URI = "mongodb://localhost/fingerprint-app"
 
@@ -38,6 +40,8 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use("/user",userRouter)
+app.use("/record",recordRouter)
+app.use("/senjata",senjataRouter)
 
 app.listen(7500, () => {
     console.log("Server is running!")

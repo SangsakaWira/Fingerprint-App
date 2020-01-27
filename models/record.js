@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 
 const recordSchema = new mongoose.Schema({
   tanggal:String,
-  status:String,
-  user_id:String,
-  pukul:String
+  status:{
+      type:Boolean,
+      default:false
+  },
+  user_id:String
 });
 
 const record = mongoose.model("record", recordSchema);

@@ -6,4 +6,6 @@ router.get("/create/:user_id",recordController.create);
 router.get("/updateById/:id",recordController.updateById);
 router.get("/deleteById/:id",recordController.deleteById);
 
+router.get("/getAllRecords",recordController.getAllRecords);
+
 module.exports = router;

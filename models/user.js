@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fingerprint: {
+    fingerprint_id: {
         type: String
     },
     password: {
