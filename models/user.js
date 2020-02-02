@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     fingerprint_id: {
-        type: String
+        type: String,
+        default:"00"
     },
     password: {
         type: String,
@@ -19,8 +20,9 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    no_peg: {
-        type: String
+    user_id: {
+        type: String,
+        default:"0"
     },
     senjata: {
         type: [senjataSchema],

@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const flash = require('connect-flash');
 const bodyParser = require("body-parser");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const cors = require('cors')
+
 
 const userRouter = require("./routes/user");
 const recordRouter = require("./routes/record");
@@ -33,6 +35,7 @@ app.use(
     })
 );
 
+app.use(cors())
 app.use(flash());
 
 app.use(bodyParser.urlencoded({

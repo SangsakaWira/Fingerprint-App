@@ -71,3 +71,17 @@ exports.logout = (req,res) =>{
   })
 }
 
+exports.getAllUser = (req,res) =>{
+  user.find((err,doc)=>{
+    if(err) res.send({msg:"Something is wrong!"})
+    res.send({msg:"success",data:doc})
+  })
+}
+
+exports.getUserById = (req,res) =>{
+  user.find({user_id:req.body.user_id},(err,doc)=>{
+    if(err) res.send({msg:"Something is Wrong!"})
+    res.send({msg:"success",data:doc})
+  })
+}
+
