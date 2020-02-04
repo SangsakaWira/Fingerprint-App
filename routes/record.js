@@ -7,5 +7,7 @@ router.get("/updateById/:id",recordController.updateById);
 router.get("/deleteById/:id",recordController.deleteById);
 
 router.get("/getAllRecords",recordController.getAllRecords);
+router.get("/getRecordByUserId/:user_id",recordController.getRecordByUserId)
+router.get("/getRecordByStatus/:status",recordController.getRecordByStatus)
 
 module.exports = router;

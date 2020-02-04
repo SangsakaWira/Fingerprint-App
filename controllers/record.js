@@ -68,3 +68,21 @@ exports.getRecordLatestById = (req,res)=>{
         }
     })
 }
+
+exports.getRecordByUserId = (req,res)=>{
+    record.find({user_id:req.params.user_id},(err,doc)=>{
+        if(err) res.send({msg:"Error Occured"})
+        else{
+            res.send({msg:"success",data:doc})
+        }
+    })
+}
+
+exports.getRecordByStatus = (req,res)=>{
+    record.find({status:req.params.status},(err,doc)=>{
+        if(err) res.send({msg:"Error Occured"})
+        else{
+            res.send({msg:"success",data:doc})
+        }
+    })
+}
