@@ -79,7 +79,7 @@ exports.getAllUser = (req,res) =>{
 }
 
 exports.getUserById = (req,res) =>{
-  user.find({user_id:req.body.user_id},(err,doc)=>{
+  user.find({user_id:req.params.user_id},(err,doc)=>{
     if(err) res.send({msg:"Something is Wrong!"})
     res.send({msg:"success",data:doc})
   })

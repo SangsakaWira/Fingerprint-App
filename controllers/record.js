@@ -1,4 +1,5 @@
 const record = require("../models/record")
+const user = require("../models/user")
 
 // NOTES
 // router.get("/create",senjataController.create);
@@ -13,26 +14,43 @@ const record = require("../models/record")
 
 exports.create = (req,res)=>{
     let date = new Date();
-    let status = true
-    if(req.params.status === "1"){
-        status = true
-    }else{
-        status = false
-    }
-    record.create({
-        tanggal:date,
-        user_id:req.params.user_id,
-        status:status
-    },(err,doc)=>{
+    user.findOne({user_id:req.params.user_id},(err,doc)=>{
         if(err){
-            console.log(err)
-            res.send({
-                msg:"Record is not created!"
-            })
+            res.send({msg:err})
         }else{
-            res.send({
-                msg:"Record Created",
-                data:doc
+            if(doc.status === "true"){
+                status = false
+            }else{
+                status = true
+            }
+            user.findOneAndUpdate({user_id:req.params.user_id},{
+                status:status
+            },{
+                new:true
+            },(err,doc)=>{
+                if(err) res.send({msg:err})
+                else{
+                    // res.send({
+                    //     doc:doc
+                    // })
+                    record.create({
+                    tanggal:date,
+                    user_id:req.params.user_id,
+                    status:status
+                },(err,doc)=>{
+                    if(err){
+                        console.log(err)
+                        res.send({
+                            msg:"Record is not created!"
+                        })
+                    }else{
+                        res.send({
+                            msg:"Record Created",
+                            data:doc
+                        })
+                    }
+                })
+                }
             })
         }
     })

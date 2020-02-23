@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     senjata: {
         type: [senjataSchema],
         default: []
+    },
+    status:{
+        type:String,
+        default:"0"
     }
 });
 
